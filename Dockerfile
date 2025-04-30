@@ -32,6 +32,6 @@ RUN wget -O /etc/sls/sls.conf https://raw.githubusercontent.com/AlexanderWagnerD
 
 RUN wget -O /etc/supervisord.conf https://raw.githubusercontent.com/AlexanderWagnerDev/srtla-server-docker/main/conf/supervisord.conf
 
-EXPOSE 5000/udp 4001/udp 8181/tcp
+EXPOSE 5000/udp 8282/udp 8181/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
