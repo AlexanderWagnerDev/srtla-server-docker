@@ -28,9 +28,9 @@ COPY --from=ghcr.io/openirl/srt-live-server:latest /usr/local/lib/libsrt* /usr/l
 
 COPY --chmod=755 bin/logprefix /bin/logprefix
 
-RUN wget -O /etc/sls/sls.conf https://raw.githubusercontent.com/AlexanderWagnerDev/srtla-server-docker/main/conf/sls.conf
+COPY conf/sls.conf /etc/sls/sls.conf
 
-RUN wget -O /etc/supervisord.conf https://raw.githubusercontent.com/AlexanderWagnerDev/srtla-server-docker/main/conf/supervisord.conf
+COPY conf/supervisord.conf /etc/supervisord.conf
 
 EXPOSE 5000/udp 4000/udp 8789/tcp
 
