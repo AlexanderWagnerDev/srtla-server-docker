@@ -12,7 +12,7 @@ Watch-URL: srt://ip:4001/play/live/{livekey}
 
 Stats-URL: http://ip:8080/stats/publish/live/{livekey}
 
-{livekeystream} is your streamkey, that can be anything
+{livekey} is your streamkey, that can be anything
 
 ## Build Docker Image self:
 
