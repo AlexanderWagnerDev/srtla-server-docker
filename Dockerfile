@@ -29,7 +29,7 @@ FROM alpine:latest
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
 RUN apk update && apk upgrade \
-    && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl wget \
+    && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl \
     && rm -rf /var/cache/apk/*
 
 COPY --from=builder /usr/local/bin/* /usr/local/bin/
