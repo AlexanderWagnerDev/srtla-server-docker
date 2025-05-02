@@ -32,6 +32,6 @@ COPY conf/sls.conf /etc/sls/sls.conf
 
 COPY conf/supervisord.conf /etc/supervisord.conf
 
-EXPOSE 5000/udp 4000/udp 8080/tcp
+EXPOSE 5000/udp 4001/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
