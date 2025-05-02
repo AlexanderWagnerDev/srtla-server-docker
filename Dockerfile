@@ -14,7 +14,7 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make install
 
 # SRT Live Server build
-RUN git clone https://github.com/AlexanderWagnerDev/srt-live-server \
+RUN git clone https://github.com/AlexanderWagnerDev/srt-live-server.git srt-live-server \
     && cd srt-live-server \
     && make -j$(nproc)
 
@@ -32,10 +32,10 @@ RUN apk update && apk upgrade \
     && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl \
     && rm -rf /var/cache/apk/*
 
-COPY --from=builder /usr/local/bin/* /usr/local/bin/
-COPY --from=builder /usr/local/lib/libsrt* /usr/local/lib/
-COPY --from=builder /tmp/srtla/srtla_rec /usr/local/bin/
-COPY --from=builder /tmp/srt-live-server/bin/* /usr/local/bin/
+COPY --from=builder /tmp/srt-live-server/bin /usr/local/bin
+COPY --from=builder /tmp/srtla/srtla_rec /usr/local/bin
+COPY --from=builder /usr/local/bin/srt-* /usr/local/bin
+COPY --from=builder /usr/local/lib/libsrt* /usr/local/lib
 
 COPY --chmod=755 bin/logprefix /bin/logprefix
 
