@@ -1,8 +1,7 @@
 name: Docker Multi-Platform Build
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
