@@ -8,9 +8,9 @@ SRTLA-Stream-URL: srt://ip:5000/publish/stream/{livekey}
 
 SRT-Stream-URL: srt://ip:4001/publish/stream/{livekey}
 
-Watch-URL: srt://ip:4001/play/live/{livekey}
+Watch-URL: srt://ip:4001/play/stream/{livekey}
 
-Stats-URL: http://ip:8080/stats/publish/live/{livekey}
+Stats-URL: http://ip:8080/stats/publish/stream/{livekey}
 
 {livekey} is your streamkey, that can be anything
 
