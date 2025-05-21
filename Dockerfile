@@ -14,11 +14,11 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make install
 
 # SRT Live Server build
-RUN git clone https://github.com/AlexanderWagnerDev/srt-live-server.git srt-live-server \
+RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
     && cd srt-live-server \
     && make -j$(nproc)
 
-RUN git clone https://github.com/AlexanderWagnerDev/srtla.git srtla \
+RUN git clone https://github.com/irlserver/srtla.git srtla \
     && cd srtla \
     && git submodule update --init --recursive \
     && cmake . \
