@@ -30,4 +30,4 @@ jobs:
           push: true
           tags: |
             alexanderwagnerdev/srtla-server:test
-            alexanderwagnerdev/srtla-server:v0.0.2
+            alexanderwagnerdev/srtla-server:v0.0.3
