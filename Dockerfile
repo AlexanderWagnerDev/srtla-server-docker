@@ -7,13 +7,16 @@ RUN apk update && apk upgrade \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev \
     && rm -rf /var/cache/apk/*
 
+RUN git clone https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib \
+    && cp /tmp/cpp-httplib/httplib.h /usr/include/ \
+    && rm -rf /tmp/cpp-httplib
+
 RUN git clone https://github.com/onsmith/srt.git srt \
     && cd srt \
     && ./configure \
     && make -j$(nproc) \
     && make install
 
-# SRT Live Server build
 RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
     && cd srt-live-server \
     && make -j$(nproc)
@@ -39,6 +42,7 @@ COPY --from=builder /tmp/srt-live-server/bin /usr/local/bin
 COPY --from=builder /tmp/srtla/srtla_rec /usr/local/bin
 COPY --from=builder /usr/local/bin/srt-* /usr/local/bin
 COPY --from=builder /usr/local/lib/libsrt* /usr/local/lib
+COPY --from=builder /usr/include/httplib.h /usr/include/
 
 COPY --chmod=755 bin/logprefix /bin/logprefix
 
