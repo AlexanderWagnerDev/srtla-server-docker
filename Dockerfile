@@ -45,13 +45,13 @@ COPY --from=builder /usr/local/bin/srt-* /usr/local/bin
 COPY --from=builder /usr/local/lib/libsrt* /usr/local/lib
 COPY --from=builder /usr/include/httplib.h /usr/include/
 
-RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
-    chmod 755 /etc/sls /var/lib/sls /tmp/sls && \
-    chmod 666 /etc/sls/sls.conf
-
 COPY --chmod=755 bin/logprefix /bin/logprefix
 
 COPY conf/sls.conf /etc/sls/sls.conf
+
+RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
+    chmod 755 /etc/sls /var/lib/sls /tmp/sls && \
+    chmod 666 /etc/sls/sls.conf
 
 COPY conf/supervisord.conf /etc/supervisord.conf
 
