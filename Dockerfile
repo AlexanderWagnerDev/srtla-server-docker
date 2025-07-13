@@ -1,6 +1,7 @@
 FROM alpine:latest AS builder
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+
 WORKDIR /tmp
 
 RUN apk update && apk upgrade \
@@ -17,7 +18,7 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make -j$(nproc) \
     && make install
 
-RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
+RUN git clone https://github.com/OpenIRL/srt-live-server.git /tmp/srt-live-server \
     && cd srt-live-server \
     && make -j$(nproc)
 
@@ -38,11 +39,15 @@ RUN apk update && apk upgrade \
 RUN adduser -D -u 3001 -s /bin/sh sls \
     && adduser -D -u 3002 -s /bin/sh srtla
 
-COPY --from=builder /tmp/srt-live-server/bin /usr/local/bin
 COPY --from=builder /tmp/srtla/srtla_rec /usr/local/bin
+COPY --from=builder /tmp/srt-live-server/bin /usr/local/bin
 COPY --from=builder /usr/local/bin/srt-* /usr/local/bin
 COPY --from=builder /usr/local/lib/libsrt* /usr/local/lib
 COPY --from=builder /usr/include/httplib.h /usr/include/
+
+RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
+    chmod 755 /etc/sls /var/lib/sls /tmp/sls && \
+    chmod 666 /etc/sls/sls.conf
 
 COPY --chmod=755 bin/logprefix /bin/logprefix
 
