@@ -5,7 +5,7 @@ ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 WORKDIR /tmp
 
 RUN apk update && apk upgrade \
-    && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev \
+    && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev \
     && rm -rf /var/cache/apk/*
 
 RUN git clone https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib \
@@ -33,7 +33,7 @@ FROM alpine:latest
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
 RUN apk update && apk upgrade \
-    && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl \
+    && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl procps net-tools sqlite sqlite-dev \
     && rm -rf /var/cache/apk/*
 
 RUN adduser -D -u 3001 -s /bin/sh sls \
