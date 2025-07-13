@@ -14,7 +14,7 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make install
 
 # SRT Live Server build
-RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
+RUN git clone https://github.com/OpenIRL/srt-live-server.git --branch 1.5.0 srt-live-server \
     && cd srt-live-server \
     && make -j$(nproc)
 
@@ -31,6 +31,9 @@ ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 RUN apk update && apk upgrade \
     && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl \
     && rm -rf /var/cache/apk/*
+
+RUN adduser -D -u 3001 -s /bin/sh sls \
+    && adduser -D -u 3002 -s /bin/sh srtla
 
 COPY --from=builder /tmp/srt-live-server/bin /usr/local/bin
 COPY --from=builder /tmp/srtla/srtla_rec /usr/local/bin
