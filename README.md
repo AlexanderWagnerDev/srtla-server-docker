@@ -4,13 +4,13 @@ For all systems: docker run -d --name srtla-server --restart always -p 4000:4000
 
 ## Usage:
 
-SRTLA-Stream-URL: srt://ip:5000/publish/stream/{livekey}
+SRTLA-Stream-URL: srt://ip:5000?streamid={livekey}
 
-SRT-Stream-URL: srt://ip:4001/publish/stream/{livekey}
+SRT-Stream-URL: srt://ip:4000?streamid={livekey}
 
-Watch-URL: srt://ip:4000/play/stream/{livekey}
+Watch-URL: srt://ip:4001?streamid={livekey}
 
-Stats-URL: http://ip:8080/stats/publish/stream/{livekey}
+Stats-URL: http://ip:8080/stats/{livekey}
 
 {livekey} is your streamkey, that can be anything
 
