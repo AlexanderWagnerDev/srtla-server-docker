@@ -1,6 +1,6 @@
-# SRTLA Docker Server
+# SRTLA Docker Server BETA
 
-For all systems: docker run -d --name srtla-server --restart always -p 8080:8080/tcp -p 5000:5000/udp -p 4001:4001/udp alexanderwagnerdev/srtla-server:latest
+For all systems: docker run -d --name srtla-server --restart always -p 8080:8080/tcp -p 5000:5000/udp -p 4001:4001/udp alexanderwagnerdev/srtla-server:beta
 
 ## Usage:
 
@@ -16,7 +16,7 @@ Stats-URL: http://ip:8080/stats/publish/stream/{livekey}
 
 ## Build Docker Image self:
 
-wget https://raw.githubusercontent.com/AlexanderWagnerDev/srtla-server-docker/main/Dockerfile
+wget https://raw.githubusercontent.com/AlexanderWagnerDev/srtla-server-docker/beta/Dockerfile
 
 Build Image: docker build --no-cache -t srtla-server .
 
