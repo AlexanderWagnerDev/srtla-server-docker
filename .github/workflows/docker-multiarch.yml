@@ -39,7 +39,7 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/386,linux/arm/v7,linux/arm/v6,linux/riscv64
           push: true
           tags: |
-            alexanderwagnerdev/srtla-server:v0.0.6-beta
+            alexanderwagnerdev/srtla-server:v0.0.6-beta1
             alexanderwagnerdev/srtla-server:beta
-            ghcr.io/alexanderwagnerdev/srtla-server:v0.0.6-beta
+            ghcr.io/alexanderwagnerdev/srtla-server:v0.0.6-beta1
             ghcr.io/alexanderwagnerdev/srtla-server:beta
