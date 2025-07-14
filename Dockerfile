@@ -18,7 +18,7 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make -j$(nproc) \
     && make install
 
-RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
+RUN git clone --branch 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server \
     && cd srt-live-server \
     && make -j$(nproc)
 
