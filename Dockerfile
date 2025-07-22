@@ -32,8 +32,9 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make -j$(nproc) \
     && make install
 
-COPY . /tmp/srt-live-server
-RUN cd srt-live-server && make -j$(nproc)
+RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
+    && cd srt-live-server \
+    && make -j$(nproc)
 
 FROM alpine:latest
 
