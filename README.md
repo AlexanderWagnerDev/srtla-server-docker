@@ -2,6 +2,15 @@
 
 For all systems: docker run -d --name srtla-server --restart always -p 8080:8080/tcp -p 5000:5000/udp -p 4001:4001/udp alexanderwagnerdev/srtla-server:latest
 
+## Project Information
+
+This project is based on the following components:
+
+- SRT: [onsmith/srt](https://github.com/onsmith/srt)
+- SRTLA: [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
+- SRT-Live-Server: [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
+- SRTLA-Reciver: [OpenIRL/srtla-receiver](https://github.com/OpenIRL/srtla-receiver)
+
 ## Usage:
 
 SRTLA-Stream-URL: srtla://ip:5000?streamid=publish/stream/{livekey}
