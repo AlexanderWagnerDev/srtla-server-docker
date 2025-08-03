@@ -2,6 +2,8 @@ FROM alpine:latest AS srtla-builder
 
 WORKDIR /tmp
 
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+
 RUN apk update \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev \
     && rm -rf /var/cache/apk/*
@@ -15,6 +17,8 @@ RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla \
 FROM alpine:latest AS sls-builder
 
 WORKDIR /tmp
+
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
 RUN apk update \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev \
@@ -35,6 +39,8 @@ RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
     && make -j$(nproc)
 
 FROM alpine:latest
+
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
 RUN apk update \
     && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl procps net-tools sqlite sqlite-dev \
@@ -61,3 +67,4 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+
