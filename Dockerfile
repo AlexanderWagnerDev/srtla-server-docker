@@ -1,6 +1,5 @@
 FROM alpine:latest AS srtla-builder
 
-ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 WORKDIR /tmp
 
 RUN apk update \
@@ -15,7 +14,6 @@ RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla \
 
 FROM alpine:latest AS sls-builder
 
-ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 WORKDIR /tmp
 
 RUN apk update \
@@ -37,8 +35,6 @@ RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
     && make -j$(nproc)
 
 FROM alpine:latest
-
-ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
 RUN apk update \
     && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl procps net-tools sqlite sqlite-dev \
