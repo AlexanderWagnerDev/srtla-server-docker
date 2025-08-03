@@ -2,6 +2,8 @@ FROM alpine:latest AS builder
 
 WORKDIR /tmp
 
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+
 RUN apk update && apk upgrade \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev \
     && rm -rf /var/cache/apk/*
@@ -24,6 +26,8 @@ RUN git clone https://github.com/OpenIRL/srtla.git srtla \
 
 FROM alpine:latest
 
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+
 RUN apk update && apk upgrade \
     && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl \
     && rm -rf /var/cache/apk/*
@@ -42,4 +46,5 @@ COPY conf/supervisord.conf /etc/supervisord.conf
 EXPOSE 5000/udp 4001/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+
 
