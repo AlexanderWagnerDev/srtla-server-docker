@@ -1,11 +1,27 @@
-FROM alpine:latest AS builder
+FROM alpine:latest AS srtla-builder
 
 WORKDIR /tmp
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
-RUN apk update && apk upgrade \
+RUN apk update \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev \
+    && rm -rf /var/cache/apk/*
+
+RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla \
+    && cd srtla \
+    && git submodule update --init --recursive \
+    && cmake . \
+    && make -j$(nproc)
+
+FROM alpine:latest AS sls-builder
+
+WORKDIR /tmp
+
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+
+RUN apk update \
+    && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev \
     && rm -rf /var/cache/apk/*
 
 RUN git clone https://github.com/onsmith/srt.git srt \
@@ -15,36 +31,36 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make install
 
 RUN git clone https://github.com/OpenIRL/srt-live-server.git --branch 1.0.1 srt-live-server \
+
     && cd srt-live-server \
     && make -j$(nproc)
-
-RUN git clone https://github.com/OpenIRL/srtla.git srtla \
-    && cd srtla \
-    && git submodule update --init --recursive \
-    && cmake . \
-    && make -j${nproc}
 
 FROM alpine:latest
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
-RUN apk update && apk upgrade \
-    && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl \
+RUN apk update \
+    && apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl procps net-tools sqlite sqlite-dev \
     && rm -rf /var/cache/apk/*
 
-COPY --from=builder /tmp/srtla/srtla_rec /usr/local/bin
-COPY --from=builder /tmp/srt-live-server/bin /usr/local/bin
-COPY --from=builder /usr/local/bin/srt-* /usr/local/bin
-COPY --from=builder /usr/local/lib/libsrt* /usr/local/lib
+RUN adduser -D -u 3001 -s /bin/sh sls \
+    && adduser -D -u 3002 -s /bin/sh srtla
+
+COPY --from=srtla-builder /tmp/srtla/srtla_rec /usr/local/bin
+COPY --from=sls-builder /tmp/srt-live-server/bin /usr/local/bin
+COPY --from=sls-builder /usr/local/bin/srt-* /usr/local/bin
+COPY --from=sls-builder /usr/local/lib/libsrt* /usr/local/lib
+COPY --from=sls-builder /usr/include/httplib.h /usr/include/
 
 COPY --chmod=755 bin/logprefix /bin/logprefix
 
-COPY conf/sls.conf /etc/sls/sls.conf
-
+COPY conf/sls.conf /etc/sls/
 COPY conf/supervisord.conf /etc/supervisord.conf
 
-EXPOSE 5000/udp 4001/udp 8080/tcp
+RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls \
+    && chmod 755 /etc/sls /var/lib/sls /tmp/sls \
+    && chmod 666 /etc/sls/sls.conf
+
+EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
-
-
