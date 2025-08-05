@@ -62,5 +62,4 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls \
 
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
-
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
