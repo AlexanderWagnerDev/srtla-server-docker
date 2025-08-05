@@ -24,17 +24,14 @@ RUN apk update \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev \
     && rm -rf /var/cache/apk/*
 
-RUN git clone https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib \
-    && cp /tmp/cpp-httplib/httplib.h /usr/include/ \
-    && rm -rf /tmp/cpp-httplib
-
 RUN git clone https://github.com/onsmith/srt.git srt \
     && cd srt \
     && ./configure \
     && make -j$(nproc) \
     && make install
 
-RUN git clone https://github.com/OpenIRL/srt-live-server.git srt-live-server \
+RUN git clone https://github.com/OpenIRL/srt-live-server.git --branch 1.0.1 srt-live-server \
+
     && cd srt-live-server \
     && make -j$(nproc)
 
@@ -67,4 +64,3 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
-
