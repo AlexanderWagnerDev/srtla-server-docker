@@ -1,6 +1,6 @@
-# SRTLA Docker Server BETA
+# SRTLA Docker Server
 
-For all systems: docker run -d --name srtla-server --restart always -p 4000:4000/udp -p 4001:4001/udp -p 5000:5000/udp -p 8080:8080/tcp alexanderwagnerdev/srtla-server:beta
+For all systems: docker run -d --name srtla-server --restart always -p 4000:4000/udp -p 4001:4001/udp -p 5000:5000/udp -p 8080:8080/tcp alexanderwagnerdev/srtla-server:latest
 
 ## Project Information
 
