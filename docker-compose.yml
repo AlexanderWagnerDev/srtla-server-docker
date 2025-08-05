@@ -18,7 +18,7 @@ services:
         max-file: "3"
 
   receiver:
-    image: ghcr.io/alexanderwagnerdev/srtla-server:beta
+    image: ghcr.io/alexanderwagnerdev/srtla-server:latest
     container_name: srtla-receiver
     restart: unless-stopped
     ports:
