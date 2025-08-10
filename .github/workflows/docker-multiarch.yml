@@ -5,10 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -39,7 +36,7 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/386,linux/arm/v7,linux/arm/v6,linux/riscv64
           push: true
           tags: |
-            alexanderwagnerdev/srtla-server:v0.1.0
+            alexanderwagnerdev/srtla-server:v0.1.1
             alexanderwagnerdev/srtla-server:latest
-            ghcr.io/alexanderwagnerdev/srtla-server:v0.1.0
+            ghcr.io/alexanderwagnerdev/srtla-server:v0.1.1
             ghcr.io/alexanderwagnerdev/srtla-server:latest
