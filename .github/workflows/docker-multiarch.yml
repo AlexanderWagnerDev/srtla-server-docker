@@ -9,9 +9,6 @@ jobs:
     permissions:
       packages: write
     steps:
-      - uses: eviden-actions/clean-self-hosted-runner@v1
-        if: ${{ always() }}
-        
       - name: Checkout code
         uses: actions/checkout@v4
 
