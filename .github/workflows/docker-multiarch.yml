@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - uses: eviden-actions/clean-self-hosted-runner@v1
+        if: ${{ always() }}
+        
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -38,3 +41,6 @@ jobs:
           tags: |
             alexanderwagnerdev/srtla-server:beta
             ghcr.io/alexanderwagnerdev/srtla-server:beta
+
+      - uses: eviden-actions/clean-self-hosted-runner@v1
+        if: ${{ always() }}
