@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    permissions:
+      packages: write
     steps:
       - uses: eviden-actions/clean-self-hosted-runner@v1
         if: ${{ always() }}
