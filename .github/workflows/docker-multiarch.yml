@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: eviden-actions/clean-self-hosted-runner@v1
         if: ${{ always() }}
+        
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -42,3 +43,6 @@ jobs:
             alexanderwagnerdev/srtla-server:latest
             ghcr.io/alexanderwagnerdev/srtla-server:v0.1.1
             ghcr.io/alexanderwagnerdev/srtla-server:latest
+            
+      - uses: eviden-actions/clean-self-hosted-runner@v1
+        if: ${{ always() }}
