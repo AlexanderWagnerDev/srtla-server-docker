@@ -1,6 +1,6 @@
 services:
   sls-management-ui:
-    image: ghcr.io/alexanderwagnerdev/slsmu:latest
+    image: alexanderwagnerdev/slsmu:latest
     container_name: sls-management-ui
      restart: unless-stopped
     environment:
@@ -11,15 +11,10 @@ services:
       REACT_APP_SRTLA_PORT: "${SRTLA_PORT:-5000}"
     ports:
       - "${SLS_MGNT_PORT}:3000"
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
 
-  receiver:
-    image: ghcr.io/alexanderwagnerdev/srtla-server:beta
-    container_name: srtla-receiver
+  srtla-server:
+    image: alexanderwagnerdev/srtla-server:beta
+    container_name: srtla-server
     restart: unless-stopped
     ports:
       - "${SLS_STATS_PORT}:8080/tcp"
@@ -28,8 +23,3 @@ services:
       - "${SRT_PLAYER_PORT}:4000/udp"
     volumes:
       - ./data:/var/lib/sls
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
