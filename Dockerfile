@@ -31,7 +31,6 @@ RUN git clone https://github.com/onsmith/srt.git srt \
     && make install
 
 RUN git clone https://github.com/OpenIRL/srt-live-server.git --branch 1.0.1 srt-live-server \
-
     && cd srt-live-server \
     && make -j$(nproc)
 
@@ -62,5 +61,6 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls \
     && chmod 666 /etc/sls/sls.conf
 
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
+
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
