@@ -10,6 +10,7 @@ This project is based on the following components:
 - SRTLA: [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
 - SRT-Live-Server: [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 - SRTLA-Reciver: [OpenIRL/srtla-receiver](https://github.com/OpenIRL/srtla-receiver)
+- SLS Management UI: [OpenIRL/sls-management-ui]([https://github.com/AlexanderWagnerDev/slsmu-docker](https://github.com/OpenIRL/sls-management-ui))
 
 ## Usage:
 
@@ -17,10 +18,10 @@ SRTLA-Stream-URL: srt://ip:5000?streamid={livekey}
 
 SRT-Stream-URL: srt://ip:4000?streamid={livekey}
 
-Watch-URL: srt://ip:4001?streamid={livekey}
+Watch-URL: srt://ip:4001?streamid={playekey}
 
-Stats-URL: http://ip:8080/stats/{livekey}
+Stats-URL: http://ip:8080/stats/{playkey}
 
-{livekey} is your streamkey, that musst be configure with sls-managment-ui
+{livekey} and {playkey} is your streamkey, that musst be configure with [sls-management-ui](https://github.com/AlexanderWagnerDev/slsmu-docker)
 
 Docker Hub: https://hub.docker.com/r/alexanderwagnerdev/srtla-server
