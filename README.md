@@ -10,7 +10,7 @@ This project is based on the following components:
 - SRTLA: [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
 - SRT-Live-Server: [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 - SRTLA-Reciver: [OpenIRL/srtla-receiver](https://github.com/OpenIRL/srtla-receiver)
-- SLS Management UI: [OpenIRL/sls-management-ui]([https://github.com/AlexanderWagnerDev/slsmu-docker](https://github.com/OpenIRL/sls-management-ui))
+- SLS Management UI: [OpenIRL/sls-management-ui](https://github.com/OpenIRL/sls-management-ui)
 
 ## Usage:
 
