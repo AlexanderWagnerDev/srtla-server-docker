@@ -1,9 +1,11 @@
 FROM alpine:latest AS srtla-builder
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+
 WORKDIR /tmp
 
 RUN apk update \
+    && apk upgrade \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev \
     && rm -rf /var/cache/apk/*
 
@@ -20,6 +22,7 @@ ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 WORKDIR /tmp
 
 RUN apk update \
+    && apk upgrade \
     && apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev \
     && rm -rf /var/cache/apk/*
 
