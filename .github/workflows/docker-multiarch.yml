@@ -41,6 +41,3 @@ jobs:
           tags: |
             alexanderwagnerdev/srtla-server:beta
             ghcr.io/alexanderwagnerdev/srtla-server:beta
-
-      - uses: eviden-actions/clean-self-hosted-runner@v1
-        if: ${{ always() }}
