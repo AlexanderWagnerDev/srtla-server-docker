@@ -1,4 +1,4 @@
-FROM alpine:latest AS srtla-builder
+FROM alexanderwagnerdev/alpine:latest AS srtla-builder
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
@@ -15,7 +15,7 @@ RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla \
     && cmake . \
     && make -j$(nproc)
 
-FROM alpine:latest AS sls-builder
+FROM alexanderwagnerdev/alpine:latest AS sls-builder
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
@@ -39,7 +39,7 @@ RUN git clone --branch 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-
     && cd srt-live-server \
     && make -j$(nproc)
 
-FROM alpine:latest
+FROM alexanderwagnerdev/alpine:latest
 
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
