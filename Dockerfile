@@ -22,7 +22,6 @@ ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 WORKDIR /tmp
 
 RUN apk update && \
-    apk upgrade && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
     rm -rf /var/cache/apk/*
 
@@ -37,7 +36,7 @@ RUN git clone https://github.com/onsmith/srt.git srt && \
     make install
 
 RUN git clone --branch 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
-    cd srt-live-server \
+    cd srt-live-server && \
     make -j$(nproc)
 
 FROM alexanderwagnerdev/alpine:latest
@@ -45,6 +44,7 @@ FROM alexanderwagnerdev/alpine:latest
 ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 
 RUN apk update && \
+    apk upgrade && \
     apk add --no-cache openssl libstdc++ supervisor coreutils spdlog perl procps net-tools sqlite sqlite-dev && \
     rm -rf /var/cache/apk/*
 
