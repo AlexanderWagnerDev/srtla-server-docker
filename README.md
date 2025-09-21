@@ -18,10 +18,12 @@ SRTLA-Stream-URL: srt://ip:5000?streamid={livekey}
 
 SRT-Stream-URL: srt://ip:4000?streamid={livekey}
 
-Watch-URL: srt://ip:4001?streamid={playekey}
+Watch-URL: srt://ip:4001?streamid={playkey}
+
+Stats-URL: http://ip:8080/stats/{playkey}?legacy=1 (for legacy Stats Support)
 
 Stats-URL: http://ip:8080/stats/{playkey}
 
-{livekey} and {playkey} is your streamkey, that musst be configure with [sls-management-ui](https://github.com/AlexanderWagnerDev/slsmu-docker)
+{livekey} and {playkey} is your key, that musst be configure with [sls-management-ui](https://github.com/AlexanderWagnerDev/slsmu-docker)
 
 Docker Hub: https://hub.docker.com/r/alexanderwagnerdev/srtla-server
