@@ -1,6 +1,27 @@
-FROM alexanderwagnerdev/alpine:builder AS srtla-builder
+FROM alexanderwagnerdev/alpine:builder AS sls-builder
 
-ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+WORKDIR /tmp
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
+    rm -rf /var/cache/apk/*
+
+RUN git clone -b v0.27.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
+    cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
+    rm -rf /tmp/cpp-httplib
+
+RUN git clone -b belabox https://github.com/onsmith/srt.git srt && \
+    cd srt && \
+    ./configure && \
+    make -j$(nproc) && \
+    make install
+
+RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
+    cd srt-live-server && \
+    make -j$(nproc)
+
+FROM alexanderwagnerdev/alpine:builder AS srtla-builder
 
 WORKDIR /tmp
 
@@ -15,33 +36,7 @@ RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
     cmake . && \
     make -j$(nproc)
 
-FROM alexanderwagnerdev/alpine:builder AS sls-builder
-
-ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
-
-WORKDIR /tmp
-
-RUN apk update && \
-    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
-    rm -rf /var/cache/apk/*
-
-RUN git clone https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
-    cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
-    rm -rf /tmp/cpp-httplib
-
-RUN git clone https://github.com/onsmith/srt.git srt && \
-    cd srt && \
-    ./configure && \
-    make -j$(nproc) && \
-    make install
-
-RUN git clone --branch 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
-    cd srt-live-server && \
-    make -j$(nproc)
-
-FROM alexanderwagnerdev/alpine:autoupdate
-
-ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
+FROM alexanderwagnerdev/alpine:autoupdate-stable
 
 RUN apk update && \
     apk upgrade && \
