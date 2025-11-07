@@ -11,7 +11,7 @@ RUN git clone -b v0.27.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-htt
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b belabox https://github.com/onsmith/srt.git srt && \
+RUN git clone -b belabox-dev2 https://github.com/irlserver/srt.git srt && \
     cd srt && \
     ./configure && \
     make -j$(nproc) && \
