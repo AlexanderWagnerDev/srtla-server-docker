@@ -1,4 +1,4 @@
-FROM alexanderwagnerdev:5000/alpine:builder AS sls-builder
+FROM alexanderwagnerdev/alpine:builder AS sls-builder
 
 WORKDIR /tmp
 
@@ -18,7 +18,7 @@ RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-s
     cd srt-live-server && \
     make -j$(nproc)
 
-FROM alexanderwagnerdev:5000/alpine:builder AS srtla-builder
+FROM alexanderwagnerdev/alpine:builder AS srtla-builder
 
 WORKDIR /tmp
 
@@ -58,3 +58,4 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+
