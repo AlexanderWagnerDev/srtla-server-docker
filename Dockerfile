@@ -2,13 +2,16 @@ FROM alexanderwagnerdev/alpine:builder AS sls-builder
 
 WORKDIR /tmp
 
-RUN apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
+    rm -rf /var/cache/apk/*
 
 RUN git clone -b v0.27.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
+RUN git clone -b belabox https://github.com/onsmith/srt.git srt && \
     cd srt && \
     ./configure && \
     make -j$(nproc) && \
@@ -22,7 +25,10 @@ FROM alexanderwagnerdev/alpine:builder AS srtla-builder
 
 WORKDIR /tmp
 
-RUN apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
+    rm -rf /var/cache/apk/*
 
 RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
     cd srtla && \
@@ -58,4 +64,3 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
-
