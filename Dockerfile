@@ -11,7 +11,7 @@ RUN git clone -b v0.27.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-htt
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b belabox-dev2 https://github.com/irlserver/srt.git srt && \
+RUN git clone https://github.com/onsmith/srt.git srt && \
     cd srt && \
     ./configure && \
     make -j$(nproc) && \
@@ -64,3 +64,4 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+
