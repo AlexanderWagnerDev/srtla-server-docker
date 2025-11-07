@@ -6,7 +6,7 @@ For all systems: docker run -d --name srtla-server --restart always -p 4000:4000
 
 This project is based on the following components:
 
-- SRT: [onsmith/srt](https://github.com/onsmith/srt)
+- SRT: [IRLServer/srt](https://github.com/irlserver/srt)
 - SRTLA: [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
 - SRT-Live-Server: [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 - SRTLA-Reciver: [OpenIRL/srtla-receiver](https://github.com/OpenIRL/srtla-receiver)
@@ -26,4 +26,4 @@ Stats-URL: http://ip:8080/stats/{playkey}
 
 {livekey} and {playkey} is your key, that musst be configure with [sls-management-ui](https://github.com/AlexanderWagnerDev/slsmu-docker)
 
-Docker Hub: https://hub.docker.com/r/alexanderwagnerdev/srtla-server
+Docker Hub: [alexanderwagnerdev/srtla-server](https://hub.docker.com/r/alexanderwagnerdev/srtla-server)
