@@ -36,7 +36,7 @@ RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
     cmake . && \
     make -j$(nproc)
 
-FROM alexanderwagnerdev/alpine:autoupdate-stable
+FROM alexanderwagnerdev/alpine:latest
 
 RUN apk update && \
     apk upgrade && \
