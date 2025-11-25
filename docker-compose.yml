@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   srtla-server:
     image: alexanderwagnerdev/srtla-server:latest
