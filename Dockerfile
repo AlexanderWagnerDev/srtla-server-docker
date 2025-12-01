@@ -40,7 +40,7 @@ FROM alexanderwagnerdev/alpine:latest
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache openssl libstdc++ supervisor coreutils perl sqlite && \
+    apk add --no-cache openssl libstdc++ supervisor coreutils procps spdlog perl sqlite && \
     rm -rf /var/cache/apk/*
 
 RUN adduser -D -u 3001 -s /bin/sh sls && \
