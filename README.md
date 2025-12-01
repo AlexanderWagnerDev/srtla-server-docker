@@ -16,9 +16,9 @@ This project is based on the following components:
 
 SRTLA-Stream-URL: srt://ip:5000?streamid={livekey}
 
-SRT-Stream-URL: srt://ip:4000?streamid={livekey}
+SRT-Stream-URL: srt://ip:4001?streamid={livekey}
 
-Watch-URL: srt://ip:4001?streamid={playkey}
+Watch-URL: srt://ip:4000?streamid={playkey}
 
 Stats-URL: http://ip:8080/stats/{playkey}?legacy=1 (for legacy Stats Support)
 
