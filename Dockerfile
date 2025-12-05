@@ -13,7 +13,7 @@ RUN git clone -b v0.28.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-htt
 
 RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
     cd srt && \
-    cmake -DCMAKE_POLICY_DEFAULT_CMP0135=OLD \
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DCMAKE_BUILD_TYPE=Release \
           -DENABLE_SHARED=ON . && \
     make -j$(nproc) && \
