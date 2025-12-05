@@ -4,7 +4,7 @@ WORKDIR /tmp
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache linux-headers alpine-sdk cmake=3.25.1-r1 tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
+    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
     rm -rf /var/cache/apk/*
 
 RUN git clone -b v0.28.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
@@ -29,7 +29,7 @@ WORKDIR /tmp
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache linux-headers alpine-sdk cmake=3.25.1-r1 tcl openssl-dev zlib-dev spdlog spdlog-dev && \
+    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
     rm -rf /var/cache/apk/*
 
 RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
