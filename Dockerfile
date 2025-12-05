@@ -4,7 +4,7 @@ WORKDIR /tmp
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
+    apk add --no-cache linux-headers alpine-sdk cmake=3.25.1-r1 tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
     rm -rf /var/cache/apk/*
 
 RUN git clone -b v0.28.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
@@ -13,8 +13,11 @@ RUN git clone -b v0.28.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-htt
 
 RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
     cd srt && \
-    ./configure && \
-    make -j$(nproc) CFLAGS="-DCMAKE_POLICY_VERSION_MINIMUM=3.5" && \
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DENABLE_SHARED=ON \
+          -DENABLE_STATIC=OFF \
+          -DENABLE_LOGGING=OFF . && \
+    make -j$(nproc) && \
     make install
 
 RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
@@ -27,13 +30,14 @@ WORKDIR /tmp
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
+    apk add --no-cache linux-headers alpine-sdk cmake=3.25.1-r1 tcl openssl-dev zlib-dev spdlog spdlog-dev && \
     rm -rf /var/cache/apk/*
 
 RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
     cd srtla && \
     git submodule update --init --recursive && \
-    cmake . && \
+    make -DCMAKE_BUILD_TYPE=Release \
+          -DENABLE_SHARED=ON . && \
     make -j$(nproc)
 
 FROM alexanderwagnerdev/alpine:latest
