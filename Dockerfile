@@ -35,7 +35,7 @@ RUN apk update && \
 RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
     cd srtla && \
     git submodule update --init --recursive && \
-    make -DCMAKE_BUILD_TYPE=Release \
+    cmake -DCMAKE_BUILD_TYPE=Release \
           -DENABLE_SHARED=ON . && \
     make -j$(nproc)
 
