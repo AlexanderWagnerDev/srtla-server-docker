@@ -1,4 +1,4 @@
-FROM alexanderwagnerdev/alpine:builder AS sls-builder
+FROM ghcr.io/alexanderwagnerdev/alpine:builder AS sls-builder
 
 WORKDIR /tmp
 
@@ -23,7 +23,7 @@ RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-s
     cd srt-live-server && \
     make -j$(nproc)
 
-FROM alexanderwagnerdev/alpine:builder AS srtla-builder
+FROM ghcr.io/alexanderwagnerdev/alpine:builder AS srtla-builder
 
 WORKDIR /tmp
 
@@ -39,7 +39,7 @@ RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
           -DENABLE_SHARED=ON . && \
     make -j$(nproc)
 
-FROM alexanderwagnerdev/alpine:latest
+FROM ghcr.io/alexanderwagnerdev/alpine:latest
 
 RUN apk update && \
     apk upgrade && \
