@@ -19,7 +19,7 @@ RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
     make -j$(nproc) && \
     make install
 
-RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
+RUN git clone -b next https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
     cd srt-live-server && \
     make -j$(nproc)
 
@@ -32,7 +32,7 @@ RUN apk update && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
     rm -rf /var/cache/apk/*
 
-RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
+RUN git clone -b next https://github.com/OpenIRL/srtla.git srtla && \
     cd srtla && \
     git submodule update --init --recursive && \
     cmake -DCMAKE_BUILD_TYPE=Release \
