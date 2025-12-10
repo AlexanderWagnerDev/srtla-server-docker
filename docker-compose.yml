@@ -13,7 +13,7 @@ services:
       - "${SLS_MGNT_PORT}:3000"
 
   srtla-server:
-    image: alexanderwagnerdev/srtla-server:beta
+    image: alexanderwagnerdev/srtla-server:next
     container_name: srtla-server
     restart: unless-stopped
     ports:
