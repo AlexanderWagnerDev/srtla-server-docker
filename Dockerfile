@@ -1,4 +1,4 @@
-FROM ghcr.io/alexanderwagnerdev/alpine:builder AS sls-builder
+FROM alexanderwagnerdev/alpine:builder AS sls-builder
 
 WORKDIR /tmp
 
@@ -7,11 +7,11 @@ RUN apk update && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
     rm -rf /var/cache/apk/*
 
-RUN git clone -b v0.28.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
+RUN git clone -b v0.29.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
+RUN git clone -b belabox-dev2 https://github.com/irlserver/srt.git srt && \
     cd srt && \
     cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DCMAKE_BUILD_TYPE=Release \
@@ -23,7 +23,7 @@ RUN git clone -b next https://github.com/OpenIRL/srt-live-server.git srt-live-se
     cd srt-live-server && \
     make -j$(nproc)
 
-FROM ghcr.io/alexanderwagnerdev/alpine:builder AS srtla-builder
+FROM alexanderwagnerdev/alpine:builder AS srtla-builder
 
 WORKDIR /tmp
 
@@ -39,7 +39,7 @@ RUN git clone -b next https://github.com/OpenIRL/srtla.git srtla && \
           -DENABLE_SHARED=ON . && \
     make -j$(nproc)
 
-FROM ghcr.io/alexanderwagnerdev/alpine:latest
+FROM alexanderwagnerdev/alpine:latest
 
 RUN apk update && \
     apk upgrade && \
