@@ -7,7 +7,7 @@ RUN apk update && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
     rm -rf /var/cache/apk/*
 
-RUN git clone -b v0.30.1 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
+RUN git clone -b v0.30.2 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-httplib && \
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
