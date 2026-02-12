@@ -32,7 +32,7 @@ RUN apk update && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
     rm -rf /var/cache/apk/*
 
-RUN git clone -b main https://github.com/OpenIRL/srtla.git srtla && \
+RUN git clone -b main https://github.com/irlserver/srtla.git srtla && \
     cd srtla && \
     git submodule update --init --recursive && \
     cmake -DCMAKE_BUILD_TYPE=Release \
