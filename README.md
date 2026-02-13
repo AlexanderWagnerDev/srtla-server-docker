@@ -9,16 +9,11 @@ A Docker container for running an SRTLA server with SRT-Live-Server for low-late
 
 ## 🚀 Quick Start
 
-```bash
-docker run -d \
-  --name srtla-server \
-  --restart unless-stopped \
-  -p 4000:4000/udp \
-  -p 4001:4001/udp \
-  -p 5000:5000/udp \
-  -p 8080:8080/tcp \
-  alexanderwagnerdev/srtla-server:latest
-```
+> **Recommended:** Use the automated installer for the best experience:
+> 
+> **[stream-relay-installer](https://github.com/AlexanderWagnerDev/stream-relay-installer)**
+>
+> This installer provides proper configuration, management, and deployment of the SRTLA server.
 
 ## 📖 Usage
 
@@ -55,6 +50,7 @@ This project is based on the following open-source components:
 ## 🔗 Links
 
 - **Docker Hub:** [alexanderwagnerdev/srtla-server](https://hub.docker.com/r/alexanderwagnerdev/srtla-server)
+- **Installer:** [stream-relay-installer](https://github.com/AlexanderWagnerDev/stream-relay-installer)
 - **Management Panel:** [slspanel-docker](https://github.com/AlexanderWagnerDev/slspanel-docker)
 
 ## 📄 License
@@ -71,16 +67,11 @@ Ein Docker-Container für einen SRTLA-Server mit SRT-Live-Server für Streaming 
 
 ## 🚀 Schnellstart
 
-```bash
-docker run -d \
-  --name srtla-server \
-  --restart unless-stopped \
-  -p 4000:4000/udp \
-  -p 4001:4001/udp \
-  -p 5000:5000/udp \
-  -p 8080:8080/tcp \
-  alexanderwagnerdev/srtla-server:latest
-```
+> **Empfohlen:** Nutze den automatisierten Installer für die beste Erfahrung:
+> 
+> **[stream-relay-installer](https://github.com/AlexanderWagnerDev/stream-relay-installer)**
+>
+> Dieser Installer bietet eine korrekte Konfiguration, Verwaltung und Deployment des SRTLA-Servers.
 
 ## 📖 Verwendung
 
@@ -117,6 +108,7 @@ Dieses Projekt basiert auf folgenden Open-Source-Komponenten:
 ## 🔗 Links
 
 - **Docker Hub:** [alexanderwagnerdev/srtla-server](https://hub.docker.com/r/alexanderwagnerdev/srtla-server)
+- **Installer:** [stream-relay-installer](https://github.com/AlexanderWagnerDev/stream-relay-installer)
 - **Verwaltungs-Panel:** [slspanel-docker](https://github.com/AlexanderWagnerDev/slspanel-docker)
 
 ## 📄 Lizenz
