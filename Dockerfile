@@ -19,7 +19,7 @@ RUN git clone -b belabox-dev2 https://github.com/irlserver/srt.git srt && \
     make -j$(nproc) && \
     make install
 
-RUN git clone -b next https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
+RUN git clone -b 1.5.1 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
     cd srt-live-server && \
     make -j$(nproc)
 
