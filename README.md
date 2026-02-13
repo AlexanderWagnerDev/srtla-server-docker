@@ -7,10 +7,8 @@ For all systems: docker run -d --name srtla-server --restart unless-stopped -p 4
 This project is based on the following components:
 
 - SRT: [IRLServer/srt](https://github.com/irlserver/srt)
-- SRTLA: [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
+- SRTLA: [IRLServer/srtla](https://github.com/IRLServer/srtla)
 - SRT-Live-Server: [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
-- SRTLA-Reciver: [OpenIRL/srtla-receiver](https://github.com/OpenIRL/srtla-receiver)
-- SLS Management UI: [OpenIRL/sls-management-ui](https://github.com/OpenIRL/sls-management-ui)
 
 ## Usage:
 
@@ -24,6 +22,6 @@ Stats-URL: http://ip:8080/stats/{playkey}?legacy=1 (for legacy Stats Support)
 
 Stats-URL: http://ip:8080/stats/{playkey}
 
-{livekey} and {playkey} is your key, that musst be configure with [sls-management-ui](https://github.com/AlexanderWagnerDev/slsmu-docker)
+{livekey} and {playkey} is your key, that musst be configure with [slspanel](https://github.com/AlexanderWagnerDev/slspanel-docker)
 
 Docker Hub: [alexanderwagnerdev/srtla-server](https://hub.docker.com/r/alexanderwagnerdev/srtla-server)
