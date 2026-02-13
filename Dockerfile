@@ -19,7 +19,7 @@ RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
     make -j$(nproc) && \
     make install
 
-RUN git clone -b 1.5.1 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
+RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
     cd srt-live-server && \
     make -j$(nproc)
 
@@ -67,3 +67,4 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+
