@@ -11,7 +11,7 @@ RUN git clone -b v0.32.0 https://github.com/yhirose/cpp-httplib.git /tmp/cpp-htt
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
+RUN git clone -b master https://github.com/OpenIRL/srt.git srt && \
     cd srt && \
     cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DCMAKE_BUILD_TYPE=Release \
@@ -19,7 +19,7 @@ RUN git clone -b v1.5.4-irl2 https://github.com/irlserver/srt.git srt && \
     make -j$(nproc) && \
     make install
 
-RUN git clone -b 1.5.0 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
+RUN git clone -b 1.5.1 https://github.com/OpenIRL/srt-live-server.git srt-live-server && \
     cd srt-live-server && \
     make -j$(nproc)
 
@@ -32,7 +32,7 @@ RUN apk update && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
     rm -rf /var/cache/apk/*
 
-RUN git clone -b main https://github.com/irlserver/srtla.git srtla && \
+RUN git clone -b next https://github.com/OpenIRL/srtla.git srtla && \
     cd srtla && \
     git submodule update --init --recursive && \
     cmake -DCMAKE_BUILD_TYPE=Release \
@@ -67,4 +67,3 @@ RUN mkdir -p /etc/sls /var/lib/sls /tmp/sls && \
 EXPOSE 4000/udp 4001/udp 5000/udp 8080/tcp
 
 CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
-
