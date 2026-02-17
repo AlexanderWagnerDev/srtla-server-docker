@@ -1,4 +1,4 @@
-# 🎥 SRTLA Docker Server
+# 🎥 SRTLA Docker Server Beta
 
 [![Docker Hub](https://img.shields.io/docker/pulls/alexanderwagnerdev/srtla-server?style=flat-square)](https://hub.docker.com/r/alexanderwagnerdev/srtla-server)
 [![GitHub](https://img.shields.io/github/license/AlexanderWagnerDev/srtla-server-docker?style=flat-square)](https://github.com/AlexanderWagnerDev/srtla-server-docker)
@@ -43,8 +43,8 @@ A Docker container for running an SRTLA server with SRT-Live-Server for low-late
 
 This project is based on the following open-source components:
 
-- **SRT:** [IRLServer/srt](https://github.com/irlserver/srt)
-- **SRTLA:** [IRLServer/srtla](https://github.com/IRLServer/srtla)
+- **SRT:** [OpenIRL/srt](https://github.com/OpenIRL/srt)
+- **SRTLA:** [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
 - **SRT-Live-Server:** [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 
 ## 🔗 Links
@@ -59,7 +59,7 @@ See LICENSE file for details.
 
 ---
 
-# 🎥 SRTLA Docker Server (Deutsch)
+# 🎥 SRTLA Docker Server Beta (Deutsch)
 
 Ein Docker-Container für einen SRTLA-Server mit SRT-Live-Server für Streaming mit niedriger Latenz.
 
@@ -101,8 +101,8 @@ Ein Docker-Container für einen SRTLA-Server mit SRT-Live-Server für Streaming 
 
 Dieses Projekt basiert auf folgenden Open-Source-Komponenten:
 
-- **SRT:** [IRLServer/srt](https://github.com/irlserver/srt)
-- **SRTLA:** [IRLServer/srtla](https://github.com/IRLServer/srtla)
+- **SRT:** [OpenIRL/srt](https://github.com/OpenIRL/srt)
+- **SRTLA:** [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
 - **SRT-Live-Server:** [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 
 ## 🔗 Links
