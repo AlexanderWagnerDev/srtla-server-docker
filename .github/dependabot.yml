@@ -45,3 +45,18 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "next"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily" 
+    target-branch: "own"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "own"
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "own"
