@@ -7,11 +7,11 @@ RUN apk update && \
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
     rm -rf /var/cache/apk/*
 
-RUN git clone -b v0.47.0 https://github.com/yhirose/cpp-httplib.git cpp-httplib && \
+RUN git clone -b v0.49.0 https://github.com/yhirose/cpp-httplib.git cpp-httplib && \
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b master https://github.com/OpenIRL/srt.git srt && \
+RUN git clone -b v1.5.4+openirl.1 https://github.com/OpenIRL/srt.git srt && \
     cd srt && \
     cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DCMAKE_BUILD_TYPE=Release \
