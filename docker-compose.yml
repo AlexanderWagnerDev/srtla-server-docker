@@ -18,7 +18,7 @@ services:
     environment:
       - LANG=en
       - TZ=UTC
-      - SLS_API_URL=http://srtla-server:8789
+      - SLS_API_URL=http://srtla-server:8080
       - SLS_API_KEY=yourapikey
       - SRT_PUBLISH_PORT=4001
       - SRT_PLAYER_PORT=4000
