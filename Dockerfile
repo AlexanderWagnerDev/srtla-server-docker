@@ -11,7 +11,7 @@ RUN git clone -b v0.56.0 https://github.com/yhirose/cpp-httplib.git cpp-httplib 
     cp /tmp/cpp-httplib/httplib.h /usr/include/ && \
     rm -rf /tmp/cpp-httplib
 
-RUN git clone -b v1.5.4+openirl.1 https://github.com/OpenIRL/srt.git srt && \
+RUN git clone -b v1.5.7+openirl.1 https://github.com/AlexanderWagnerDev/openirl-srt.git srt && \
     cd srt && \
     cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
           -DCMAKE_BUILD_TYPE=Release \
