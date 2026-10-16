@@ -4,7 +4,7 @@ WORKDIR /tmp
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev sqlite-dev && \
+    apk add --no-cache alpine-sdk cmake linux-headers openssl-dev spdlog spdlog-dev sqlite-dev tcl zlib-dev && \
     rm -rf /var/cache/apk/*
 
 RUN git clone -b v0.61.0 https://github.com/yhirose/cpp-httplib.git cpp-httplib && \
@@ -29,7 +29,7 @@ WORKDIR /tmp
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev spdlog spdlog-dev && \
+    apk add --no-cache alpine-sdk cmake linux-headers openssl-dev spdlog spdlog-dev tcl zlib-dev && \
     rm -rf /var/cache/apk/*
 
 RUN git clone -b 1.0.0 https://github.com/OpenIRL/srtla.git srtla && \
@@ -43,10 +43,9 @@ FROM alexanderwagnerdev/alpine:latest
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache openssl libstdc++ supervisor coreutils procps spdlog perl sqlite && \
-    rm -rf /var/cache/apk/*
-
-RUN adduser -D -u 3001 -s /bin/sh sls && \
+    apk add --no-cache coreutils libstdc++ openssl perl procps spdlog sqlite supervisor && \
+    rm -rf /var/cache/apk/* && \
+    adduser -D -u 3001 -s /bin/sh sls && \
     adduser -D -u 3002 -s /bin/sh srtla
 
 COPY --from=srtla-builder /tmp/srtla/srtla_rec /usr/local/bin
