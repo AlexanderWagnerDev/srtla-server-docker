@@ -45,8 +45,7 @@ Un contenedor Docker para ejecutar un servidor SRTLA con SRT-Live-Server para tr
 
 Este proyecto se basa en los siguientes componentes de código abierto:
 
-- **SRT:** [OpenIRL/srt](https://github.com/OpenIRL/srt)
-- **SRTLA:** [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
+- **SRT (con SRTLA nativo):** [AlexanderWagnerDev/openirl-srt](https://github.com/AlexanderWagnerDev/openirl-srt)
 - **SRT-Live-Server:** [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 
 ## 🔗 Enlaces
@@ -103,8 +102,7 @@ Un contenedor Docker para ejecutar un servidor SRTLA con SRT-Live-Server para tr
 
 Este proyecto se basa en los siguientes componentes de código abierto:
 
-- **SRT:** [OpenIRL/srt](https://github.com/OpenIRL/srt)
-- **SRTLA:** [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
+- **SRT (con SRTLA nativo):** [AlexanderWagnerDev/openirl-srt](https://github.com/AlexanderWagnerDev/openirl-srt)
 - **SRT-Live-Server:** [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 
 ## 🔗 Enlaces
