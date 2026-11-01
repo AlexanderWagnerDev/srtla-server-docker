@@ -43,8 +43,7 @@ A Docker container for running an SRTLA server with SRT-Live-Server for low-late
 
 This project is based on the following open-source components:
 
-- **SRT:** [OpenIRL/srt](https://github.com/OpenIRL/srt)
-- **SRTLA:** [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
+- **SRT (with native SRTLA):** [AlexanderWagnerDev/openirl-srt](https://github.com/AlexanderWagnerDev/openirl-srt)
 - **SRT-Live-Server:** [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 
 ## 🔗 Links
@@ -101,8 +100,7 @@ Ein Docker-Container für einen SRTLA-Server mit SRT-Live-Server für Streaming 
 
 Dieses Projekt basiert auf folgenden Open-Source-Komponenten:
 
-- **SRT:** [OpenIRL/srt](https://github.com/OpenIRL/srt)
-- **SRTLA:** [OpenIRL/srtla](https://github.com/OpenIRL/srtla)
+- **SRT (mit nativem SRTLA):** [AlexanderWagnerDev/openirl-srt](https://github.com/AlexanderWagnerDev/openirl-srt)
 - **SRT-Live-Server:** [OpenIRL/srt-live-server](https://github.com/OpenIRL/srt-live-server)
 
 ## 🔗 Links
