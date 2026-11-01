@@ -23,32 +23,14 @@ RUN git clone -b 1.5.2 https://github.com/OpenIRL/srt-live-server.git srt-live-s
     cd srt-live-server && \
     make -j$(nproc)
 
-FROM alexanderwagnerdev/alpine:builder AS srtla-builder
-
-WORKDIR /tmp
-
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache alpine-sdk cmake linux-headers openssl-dev spdlog spdlog-dev tcl zlib-dev && \
-    rm -rf /var/cache/apk/*
-
-RUN git clone -b 1.0.0 https://github.com/OpenIRL/srtla.git srtla && \
-    cd srtla && \
-    git submodule update --init --recursive && \
-    cmake -DCMAKE_BUILD_TYPE=Release \
-          -DENABLE_SHARED=ON . && \
-    make -j$(nproc)
-
 FROM alexanderwagnerdev/alpine:latest
 
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache coreutils libstdc++ openssl perl procps spdlog sqlite supervisor && \
     rm -rf /var/cache/apk/* && \
-    adduser -D -u 3001 -s /bin/sh sls && \
-    adduser -D -u 3002 -s /bin/sh srtla
+    adduser -D -u 3001 -s /bin/sh sls
 
-COPY --from=srtla-builder /tmp/srtla/srtla_rec /usr/local/bin
 COPY --from=sls-builder /tmp/srt-live-server/bin /usr/local/bin
 COPY --from=sls-builder /usr/local/bin/srt-* /usr/local/bin
 COPY --from=sls-builder /usr/local/lib/libsrt* /usr/local/lib
